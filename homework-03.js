@@ -120,20 +120,30 @@ const characters = [
   },
 ];
 
+// function countByEyeColor(characters) {
+//   const eyeColorCount = {};
+
+//   for (let i = 0; i < characters.length; i++) {
+//     let eyeColor = characters[i].eye_color;
+
+//     if (eyeColorCount[eyeColor]) {
+//       eyeColorCount[eyeColor]++;
+//     } else {
+//       eyeColorCount[eyeColor] = 1;
+//     }
+//   }
+
+//   return eyeColorCount;
+// }
+
 function countByEyeColor(characters) {
-  const eyeColorCount = {};
+  return characters.reduce((acc, character) => {
+    const eyeColor = character.eye_color;
 
-  for (let i = 0; i < characters.length; i++) {
-    let eyeColor = characters[i].eye_color;
-
-    if (eyeColorCount[eyeColor]) {
-      eyeColorCount[eyeColor]++;
-    } else {
-      eyeColorCount[eyeColor] = 1;
-    }
-  }
-
-  return eyeColorCount;
+    if (!acc[eyeColor]) acc[eyeColor] = 0;
+    acc[eyeColor] = acc[eyeColor] + 1;
+    return acc;
+  }, {});
 }
 
 const res6 = countByEyeColor(characters);
