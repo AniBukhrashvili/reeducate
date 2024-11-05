@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1730806519072,
+    "carModel": "tesla",
+    "carColor": "black",
+    "carReleaseDate": "2024"
+  },
+  {
+    "id": 1730806527907,
+    "carModel": "tesla",
+    "carColor": "red",
+    "carReleaseDate": "2024"
+  }
+]
