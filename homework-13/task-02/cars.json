@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "bentley", "price": 11, "color": "yellow" },
+  { "id": 2, "name": "tesla", "price": 123456789, "color": "blue" },
+  { "id": 3, "name": "toyota", "price": 4, "color": "red" }
+]
