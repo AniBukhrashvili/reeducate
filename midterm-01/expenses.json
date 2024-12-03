@@ -1,0 +1,23 @@
+[
+  {
+    "id": 3,
+    "category": "ramekategoria",
+    "price": 1020000,
+    "date": "2024-12-03T11:25:49.861Z",
+    "currency": "euro"
+  },
+  {
+    "id": 4,
+    "category": "Food",
+    "price": 25,
+    "date": "2024-12-03T11:33:06.397Z",
+    "currency": "USD"
+  },
+  {
+    "id": 5,
+    "category": "ramekategoria",
+    "price": 11,
+    "date": "2024-12-03T11:37:18.887Z",
+    "currency": "evro"
+  }
+]
