@@ -30,7 +30,7 @@ export const getExpensesWithPagination = async (req, res) => {
     const start = (page - 1) * limit;
     const end = start + limit;
     const paginatedExpenses = expenses.slice(start, end);
-    res.json({
+    res.render("pages/home", {
       page: parseInt(page),
       limit: parseInt(limit),
       total: expenses.length,
@@ -84,8 +84,7 @@ export const getExpensesById = async (req, res) => {
     if (!expense) {
       return res.status(404).json({ error: "Expense not found" });
     }
-
-    res.json(expense);
+    res.render("pages/expense", { expense });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -104,7 +103,7 @@ export const deleteExpensesById = async (req, res) => {
     }
 
     await writeFile(filePath, updatedExpenses);
-    res.json({ message: `Deleted expense with ID: ${id}` });
+    res.redirect("/");
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }

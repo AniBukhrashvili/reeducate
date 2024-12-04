@@ -1,0 +1,60 @@
+.container {
+  width: 1366px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+.expenses-listing {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.expense-card {
+  border: 1px solid #efefef;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.expense-card h3 {
+  margin: 0 0 16px;
+}
+
+.expense-card span {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.btn {
+  display: flex;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+  background-color: #000;
+  padding: 12px;
+  border-radius: 6px;
+  color: #fff;
+  outline: none;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.btn.secondary {
+  background-color: #fff;
+  color: #000;
+}
+
+.btn.secondary:hover {
+  background-color: #000000;
+  color: #fff;
+}

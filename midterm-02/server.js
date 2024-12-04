@@ -10,13 +10,8 @@ app.use(express.static("public"));
 
 app.use(express.json());
 
-app.use("/expenses", expensesRouter);
+app.use("/", expensesRouter);
 app.use("/random", randomRouter);
-
-const testProp = "Ani Bukhra";
-app.get("/", (req, res) => {
-  res.render("pages/home.ejs", { testProp });
-});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

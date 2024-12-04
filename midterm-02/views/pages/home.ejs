@@ -3,10 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Midterm 02</title>
   </head>
   <body>
-    <h1>Home Page</h1>
-    <p><%= testProp %></p>
+    <div class="container">
+      <h1>Expenses</h1>
+      <div class="expenses-listing">
+        <% expenses.forEach(expense => { %>
+        <div class="expense-card">
+          <h3>Category: <%= expense.category %></h3>
+          <span><%= expense.price %> <%= expense.currency %></span>
+          <a href="expenses/<%= expense.id %>" class="btn">View Details</a>
+        </div>
+        <% }) %>
+      </div>
+    </div>
   </body>
 </html>

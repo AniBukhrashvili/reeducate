@@ -11,14 +11,18 @@ import { requiredFieldsMiddleware } from "../middlewares/requiredFields.middlewa
 
 const expensesRouter = Router();
 
-expensesRouter.post("/", requiredFieldsMiddleware, createExpense);
+// expensesRouter.post("/", requiredFieldsMiddleware, createExpense);
 
 expensesRouter.get("/", getExpensesWithPagination);
 
-expensesRouter.put("/:id", updateExpensesById);
+expensesRouter.get("/expenses/:id", getExpensesById);
 
-expensesRouter.delete("/:id", authorizationMiddleware, deleteExpensesById);
+expensesRouter.put("/expenses/:id", updateExpensesById);
 
-expensesRouter.get("/:id", getExpensesById);
+expensesRouter.delete(
+  "/expenses/:id",
+  authorizationMiddleware,
+  deleteExpensesById
+);
 
 export default expensesRouter;
