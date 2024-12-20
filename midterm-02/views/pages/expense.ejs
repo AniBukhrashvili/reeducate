@@ -12,7 +12,27 @@
       <h3>Id: <%= expense.id %></h3>
       <h3>Category: <%= expense.category %></h3>
       <h3>Price: <%= expense.price %> <%= expense.currency %></h3>
-      <a class="btn secondary">Delete Expense</a>
+      <a class="btn secondary" onclick="deleteExpense('<%= expense.id %>')"
+        >Delete Expense</a
+      >
     </div>
+
+    <%- include ('../partials/footer.ejs')%>
   </body>
 </html>
+
+<script>
+  function deleteExpense(expenseId) {
+    if (confirm("Are you sure you want to delete this expense?")) {
+      fetch(`/expenses/${expenseId}`, {
+        method: "DELETE",
+      })
+        .then((response) => {
+          window.location.href = "/";
+        })
+        .catch((error) => {
+          alert("Error deleting the expense. Please try again.", error);
+        });
+    }
+  }
+</script>

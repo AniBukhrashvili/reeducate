@@ -14,13 +14,6 @@
     "currency": "USD"
   },
   {
-    "id": 6,
-    "category": "postman",
-    "price": 67868,
-    "date": "2024-12-04T09:31:12.200Z",
-    "currency": "usd"
-  },
-  {
     "id": 7,
     "category": "route",
     "price": 1,

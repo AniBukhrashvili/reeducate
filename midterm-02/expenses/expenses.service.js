@@ -17,8 +17,16 @@ export const createExpense = async (req, res) => {
     };
     expenses.push(newExpense);
     await writeFile(filePath, expenses);
-    res.status(201).json(newExpense);
+    res.status(200).json(newExpense);
   } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+export const renderAddExpensePage = async (req, res) => {
+  try {
+    res.render("pages/addExpense.ejs");
+  } catch {
     res.status(500).json({ error: "Internal server error" });
   }
 };
@@ -36,40 +44,6 @@ export const getExpensesWithPagination = async (req, res) => {
       total: expenses.length,
       expenses: paginatedExpenses,
     });
-  } catch (error) {
-    res.status(500).json({ error: "Internal server error" });
-  }
-};
-
-export const updateExpensesById = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { category, price, currency } = req.body;
-
-    if (!category || !price || !currency) {
-      return res
-        .status(400)
-        .json({ error: "Missing required fields for updating" });
-    }
-
-    const expenses = await readFile(filePath);
-    const expenseIndex = expenses.findIndex(
-      (expense) => expense.id === parseInt(id)
-    );
-
-    if (expenseIndex === -1) {
-      return res.status(404).json({ error: "Expense not found" });
-    }
-
-    expenses[expenseIndex] = {
-      ...expenses[expenseIndex],
-      category,
-      price: parseFloat(price),
-      currency,
-      date: new Date().toISOString(),
-    };
-    await writeFile(filePath, expenses);
-    res.json(expenses[expenseIndex]);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -97,13 +71,8 @@ export const deleteExpensesById = async (req, res) => {
     const updatedExpenses = expenses.filter(
       (expense) => expense.id !== parseInt(id)
     );
-
-    if (updatedExpenses.length === expenses.length) {
-      return res.status(404).json({ error: "Expense not found" });
-    }
-
     await writeFile(filePath, updatedExpenses);
-    res.redirect("/");
+    window.location.href = "/";
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
